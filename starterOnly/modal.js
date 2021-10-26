@@ -12,7 +12,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 // création variable closeBtn
-const closeBtn = document.getElementsByClassName("close"); 
+const closeBtn = document.querySelector(".close"); 
 
 // événement lancement de modal
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -29,7 +29,7 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 //écouter l'événement et au click fermer la modale 
-modalbg.addEventListener("click", closeModal);
+closeBtn.addEventListener("click", closeModal);
 
 
 
