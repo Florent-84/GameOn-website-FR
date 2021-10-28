@@ -11,25 +11,27 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-// création variable closeBtn
-const closeBtn = document.querySelector(".close"); 
+// variable closeBtn
+const closeBtn = document.querySelector(".close");
+// variables pour implémentation du formulaire
+
+
 
 // événement lancement de modal
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+// événement de fermeture de modal
+closeBtn.addEventListener("click", closeModal);
 
 // lancer le formulaire modal
 function launchModal() {
   modalbg.style.display = "block";
 }
-
-// FERMETURE FORMULAIRE // 
-
-//création de la fonction closeModal
+//fermer le formulaire modal
 function closeModal() {
   modalbg.style.display = "none";
 }
-//écouter l'événement et au click fermer la modale 
-closeBtn.addEventListener("click", closeModal);
+
+
 
 
 
