@@ -226,12 +226,21 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
+ 
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
-} */
+} 
+
+#error-first, #error-last, #error-email, #error-birthdate, #error-quantity, #error-choice, #error-conditions, #error-options {
+  font-size: 10px;
+  color: #e54858;
+  margin-top: 3px;
+  display: none;
+}
+
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -326,13 +335,30 @@ input[data-error]::after {
   background: #fe142f;
   display: block;
   margin: 0 auto;
+  
   border-radius: 7px;
   font-size: 1rem;
   padding: 12px 82px;
   color: #fff;
   cursor: pointer;
   border: 0;
+  margin-top: 20px;
 }
+
+.confirmationMsg {
+  padding: 310px 8%;
+  margin: 35px auto;
+  text-align: center;
+  width: 500px;
+  height: 817px;
+  display: block;
+}
+
+#closeBtnRed.button.btn-submit {
+  margin-bottom: 30px;
+  display: block;
+}
+
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -436,7 +462,7 @@ input[data-error]::after {
   z-index: 1;
 }
 .hero-headline {
-  font-size: 6rem;
+  font-size: 3rem;
   font-weight: normal;
   white-space: nowrap;
 }
@@ -486,7 +512,7 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0px;
   }
   .hero-content::after {
     content: unset;
