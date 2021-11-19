@@ -32,7 +32,7 @@ const checkboxCity6 = document.getElementById("location6");
 // variable cgv
 const checkboxInput = document.getElementById("checkbox1");
 // variable message de validation formulaire
-const msgValid = document.getElementsByClassName("content confirmationMsg");
+const msgValid = document.getElementsByClassName("confirmationMsg");
 // variable bouton de fermeture quand formulaire valider
 const closeBtnRed = document.getElementById("closeBtnRed");
 // variable pour enlever formulaire 
@@ -45,6 +45,8 @@ const errorBirthdate = document.getElementById("error-birthdate");
 const errorQuantity = document.getElementById("error-quantity");
 const errorOptions = document.getElementById("error-options");
 const errorConditions = document.getElementById("error-conditions");
+// variables hero section
+const heroSection = document.getElementsByClassName("hero-section");
 
 
 /* LES REGEXS */
@@ -258,13 +260,11 @@ function validateForCheckbox() {
 if (!checkboxInput.checked){
   errorConditions.style.display = "block";
   valideInput = false;
-  console.log(valideInput)
-  return false; 
+  console.log(valideInput) 
  } else {
   errorConditions.style.display ="none";
   valideInput = true;
   console.log(valideInput)
-  return true;
  }
 }
 
@@ -272,69 +272,78 @@ if (!checkboxInput.checked){
 btnSubmit.addEventListener('click',validateForm);
 
 function validateForm(e){
-  
-//prénom   
-  if (firstNameInput.value == ""){
+    
+  //prénom   
+if (!regexFirstLast.test(firstNameInput.value)){
   e.preventDefault();
+  valideInput = false;
   errorFirst.style.display ="block";
   firstNameInput.style.borderColor = "#e54858";
   firstNameInput.style.borderWidth = "3px";
 
    }
 //nom   
-   if (lastNameInput.value == ""){ 
-  e.preventDefault();  
+if (!regexFirstLast.test(lastNameInput.value)){ 
+  e.preventDefault();
+  valideInput = false;  
   errorLast.style.display ="block";
   lastNameInput.style.borderColor = "#e54858";
   lastNameInput.style.borderWidth = "3px";
    }
 //email 
-   if (emailInput.value == ""){
-  e.preventDefault();  
+if (!regexEmail.test(emailInput.value)){
+  e.preventDefault();
+  valideInput = false;  
   errorMail.style.display ="block";
   emailInput.style.borderColor = "#e54858";
   emailInput.style.borderWidth = "3px";
    }
 //date de naissance  
-   if (birthdateInput.value == ""){
-  e.preventDefault(); 
+   if (!regexBirthdate.test(birthdateInput.value)){
+  e.preventDefault();
+  valideInput = false; 
   errorBirthdate.style.display ="block";
   birthdateInput.style.borderColor = "#e54858";
   birthdateInput.style.borderWidth = "3px";
    }
 //combien de tournoi    
-   if (quantityInput.value == ""){
+   if (!regexQuantity.test(quantityInput.value)){
    e.preventDefault();
+   valideInput = false;
   errorQuantity.style.display ="block";
   quantityInput.style.borderColor = "#e54858";
   quantityInput.style.borderWidth = "3px";
    }
 //choix des villes
-  if (checkboxCity1.checked || checkboxCity2.checked || checkboxCity3.checked || checkboxCity4.checked || checkboxCity5.checked || checkboxCity6.checked){  
+ if (checkboxCity1.checked || checkboxCity2.checked || checkboxCity3.checked || checkboxCity4.checked || checkboxCity5.checked || checkboxCity6.checked){ 
+  valideInput = true; 
   errorOptions.style.display ="none";
   } else {
   e.preventDefault();
+  valideInput = false;
   errorOptions.style.display ="block";  
   }
 //condition d'utilisation   
    if (!checkboxInput.checked){ 
   e.preventDefault();
-   errorConditions.style.display ="block";
+  valideInput = false;
+   errorConditions.style.display ="block"; 
    } else {
+  valideInput = true;
   errorConditions.style.display = "none"; 
-   } 
-} 
-
-
-
-/*btnSubmit.addEventListener('click',validateMsg);
-
-function validateMsg() {
-  e.preventDefault();  
- if (firstNameInput && lastNameInput && emailInput && birthdateInput && quantityInput && checkboxInput){
-  msgValid[0].style.display ="block";
    }
-}*/
+
+  //controle global et validation  
+  e.preventDefault();
+   if (regexFirstLast.test(firstNameInput.value) && (regexFirstLast.test(lastNameInput.value) && (regexEmail.test(emailInput.value) && (regexBirthdate.test(birthdateInput.value)
+   && (regexQuantity.test(quantityInput.value) && (checkboxCity1.checked || checkboxCity2.checked || checkboxCity3.checked || checkboxCity4.checked || checkboxCity5.checked ||
+      checkboxCity6.checked) && (checkboxInput.checked) ))))) {
+        msgValid[0].style.display ="block"; 
+        modalbg .style.display ="none"; 
+        heroSection[0].style.display ="none";      
+   } 
+}
+
 
 
 /* BOUTON  DE FERMETURE DE MESSAGE QUAND VALIDATION REUSSIE*/
