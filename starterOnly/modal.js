@@ -345,7 +345,6 @@ if (!regexEmail.test(emailInput.value)){
 }
 
 
-
 /* BOUTON  DE FERMETURE DE MESSAGE QUAND VALIDATION REUSSIE*/
 
 // événement sur le bouton fermer
@@ -353,6 +352,3 @@ closeBtnRed.addEventListener("click",closeMsg);
 function closeMsg() {
   msgValid[0].style.display = "none";
 }
-
-
-

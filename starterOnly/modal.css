@@ -90,14 +90,12 @@ img {
   }
 }
 
-
-
  @media screen and (max-width: 540px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    margin-top: 11px;
   }
 } 
 
@@ -237,6 +235,7 @@ input[data-error]::after {
   font-size: 10px;
   color: #e54858;
   margin-top: 3px;
+  margin-bottom: 5px;
   display: none;
 }
 
@@ -503,7 +502,17 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
+@media screen and (max-width: 822px) {
+
+  .topnav a {
+    margin: 0;
+    margin-top: 20px;
+  }
+}
+
 @media screen and (max-width: 800px) {
+
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -520,12 +529,13 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
     white-space: normal;
+    font-size: 3.0rem;
+    font-weight: bold;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
   .hero-img img {
     border-radius: 10px;
@@ -551,4 +561,73 @@ footer {
     opacity: 1;
   }
 }
+
+/* RESPONSIVE PETIT FORMAT */
+
+/* 480 px */
+@media screen and (max-width: 480px) {
+
+  .hero-headline {
+    font-size: 2.2rem;
+ }
+ .hero-text {
+  font-size: 1.5rem;
+  padding: 0px 70px 0px 0px;
+  margin-top: 20px;
+ }
+}
+
+/* 375 px */
+@media screen and (max-width: 375px) {
+
+  .topnav a.icon {
+    margin-top: 14px;
+}
+  .hero-headline {
+    font-size: 2.0rem;
+    white-space: normal;
+    font-weight: bold;
+    margin-top: 20px;
+}
+  .hero-text {
+    font-size: 1.5rem;
+    padding: 0px 110px 0px 0px;
+    margin-top: 20px;
+ }
+}
+
+/* 360 px */
+@media screen and (max-width: 360px){
+
+  .header-logo img {
+    width: 200px;
+    margin-top: 15px;
+    margin-left: 25px;
+  }
+  .hero-text {
+    padding: 0px 110px 0px 0px;
+    margin-top: 20px;
+ } 
+}
+
+
+/* 320 px */
+@media screen and (max-width: 320px){
+
+.header-logo img {
+  width: 200px;
+  margin-top: 15px;
+  margin-left: 25px;
+}
+.hero-text {
+  font-size: 1.0rem;
+  margin-top: 20px;
+}
+  .topnav {
+    margin: -0.5%;
+}
+  .hero-headline {
+      font-size: 1.8rem;
+   }
+  }
 
