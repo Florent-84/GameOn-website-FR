@@ -314,6 +314,18 @@ input[data-error]::after {
   cursor: pointer;
   transform: scale(0.7);
 }
+
+.closeSecond {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 32px;
+  height: 32px;
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(0.7);
+}
+
 .close:before,
 .close:after {
   position: absolute;
@@ -323,12 +335,31 @@ input[data-error]::after {
   width: 3px;
   background-color: #fff;
 }
+
+.closeSecond:before,
+.closeSecond:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 3px;
+  background-color: #fff;
+}
+
 .close:before {
   transform: rotate(45deg);
 }
 .close:after {
   transform: rotate(-45deg);
 }
+
+.closeSecond:before {
+  transform: rotate(45deg);
+}
+.closeSecond:after {
+  transform: rotate(-45deg);
+}
+
 .btn-submit,
 .btn-signup {
   background: #fe142f;
@@ -344,17 +375,17 @@ input[data-error]::after {
   margin-top: 20px;
 }
 .confirmationMsg {
-  padding: 310px 8%;
-  margin: 35px auto;
+  padding-top: 280px;
+  margin-top: 0;
   text-align: center;
-  width: auto;
-  height: auto;
+  height: 700px;
   display: none;
 }
 
 #closeBtnRed.button.btn-submit {
   margin-bottom: 30px;
   display: block;
+  margin-top: 280px;
 }
 
 /* custom select styles */
@@ -465,7 +496,7 @@ input[data-error]::after {
   white-space: nowrap;
 }
 .hero-text {
-  width: 146%;
+  width: 100%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;

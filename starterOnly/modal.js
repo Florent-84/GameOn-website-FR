@@ -13,8 +13,10 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const btnSubmit = document.getElementById("button");
-// variable fermeture modal
+// variable fermeture modal inscription
 const closeBtn = document.querySelector(".close");
+// variable bouton croix fermeture modal apres validation
+const closeBtn2 = document.querySelector(".closeSecond");
 // variables pour implémentation du formulaire
 const firstNameInput = document.getElementById("first");
 const lastNameInput = document.getElementById("last");
@@ -35,8 +37,8 @@ const checkboxInput = document.getElementById("checkbox1");
 const msgValid = document.getElementsByClassName("confirmationMsg");
 // variable bouton de fermeture quand formulaire valider
 const closeBtnRed = document.getElementById("closeBtnRed");
-// variable pour enlever formulaire 
-const removeModal = document.getElementsByClassName("modal-body")
+// variable bouton je m'incris
+const btnSuscribe = document.getElementsByClassName("btn-signup modal-btn");
 // variables messages erreur balise small
 const errorFirst = document.getElementById("error-first");
 const errorLast = document.getElementById("error-last");
@@ -78,7 +80,6 @@ modalBtn.forEach((btn) => btn.addEventListener("click", blockMsg));
 function blockMsg() {
   msgValid[0].style.display = "none";
 }
-
 
 // événement de fermeture de modal
 closeBtn.addEventListener("click", closeModal);
@@ -333,7 +334,7 @@ if (!regexEmail.test(emailInput.value)){
   errorConditions.style.display = "none"; 
    }
 
-  //controle global et validation  
+  //controle global du formulaire et validation  si tout est ok
   e.preventDefault();
    if (regexFirstLast.test(firstNameInput.value) && (regexFirstLast.test(lastNameInput.value) && (regexEmail.test(emailInput.value) && (regexBirthdate.test(birthdateInput.value)
    && (regexQuantity.test(quantityInput.value) && (checkboxCity1.checked || checkboxCity2.checked || checkboxCity3.checked || checkboxCity4.checked || checkboxCity5.checked ||
@@ -344,11 +345,22 @@ if (!regexEmail.test(emailInput.value)){
    } 
 }
 
-
 /* BOUTON  DE FERMETURE DE MESSAGE QUAND VALIDATION REUSSIE*/
 
 // événement sur le bouton fermer
 closeBtnRed.addEventListener("click",closeMsg);
 function closeMsg() {
   msgValid[0].style.display = "none";
+  heroSection[0].style.display ="block";
+// on retire bouton s'incrire de hero section sur le bouton fermer
+  btnSuscribe[0].style.display = "none";
+}
+
+// événement sur fermeture de la croix
+closeBtn2.addEventListener("click",closeValid);
+function closeValid() {
+  msgValid[0].style.display = "none";
+  heroSection[0].style.display ="block";
+  // on retire bouton s'incrire de hero section sur le bouton croix
+  btnSuscribe[0].style.display = "none";
 }
