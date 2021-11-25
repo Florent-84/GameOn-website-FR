@@ -35,10 +35,9 @@ const checkboxCity6 = document.getElementById("location6");
 const checkboxInput = document.getElementById("checkbox1");
 // variable message de validation formulaire
 const msgValid = document.getElementsByClassName("confirmationMsg");
+const pgeContent = document.getElementsByClassName("content");
 // variable bouton de fermeture quand formulaire valider
 const closeBtnRed = document.getElementById("closeBtnRed");
-// variable bouton je m'incris
-const btnSuscribe = document.getElementsByClassName("btn-signup modal-btn");
 // variables messages erreur balise small
 const errorFirst = document.getElementById("error-first");
 const errorLast = document.getElementById("error-last");
@@ -57,8 +56,8 @@ const heroSection = document.getElementsByClassName("hero-section");
 const regexFirstLast = /^[A-Za-z]{2,30}$/;
 // regex email
 const regexEmail = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,3}$/;
-// regex date de naissance
-const regexBirthdate = /^\d{4}\-\d{2}\-\d{2}$/;
+// regex date de naissance avec age minimum requis de 14 ans (non spécifié)
+const regexBirthdate = /^(19[3-9]+[0-9]|200[0-6])-\d{2}\-\d{2}$/;
 // regex combien de tournoi
 const regexQuantity = /^\d{1,2}$/;
 // variable de controle
@@ -74,13 +73,6 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-// événement lancement de modal
-modalBtn.forEach((btn) => btn.addEventListener("click", blockMsg));
-// bloquer le message reponse validation formulaire
-function blockMsg() {
-  msgValid[0].style.display = "none";
-}
-
 // événement de fermeture de modal
 closeBtn.addEventListener("click", closeModal);
 //fermer le formulaire modal
@@ -88,7 +80,7 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-/* LES EVENEMENTS DES INPUTS */
+/* LES EVENEMENTS DES INPUTS INDIVIDUEL */
 
 // événement input pour le prénom 
 firstNameInput.addEventListener ("focusout", validateFirstNameWithRegex);
@@ -269,7 +261,7 @@ if (!checkboxInput.checked){
  }
 }
 
-// événement validation du formulaire si tout les champs sont bien remplis
+//EVENEMENT POUR LA VALIDATION DU FORMULAIRE SI TOUT LES CHAMPS SONT BIEN REMPLIS AU CLICK
 btnSubmit.addEventListener('click',validateForm);
 
 function validateForm(e){
@@ -339,28 +331,46 @@ if (!regexEmail.test(emailInput.value)){
    if (regexFirstLast.test(firstNameInput.value) && (regexFirstLast.test(lastNameInput.value) && (regexEmail.test(emailInput.value) && (regexBirthdate.test(birthdateInput.value)
    && (regexQuantity.test(quantityInput.value) && (checkboxCity1.checked || checkboxCity2.checked || checkboxCity3.checked || checkboxCity4.checked || checkboxCity5.checked ||
       checkboxCity6.checked) && (checkboxInput.checked) ))))) {
+        //affichage message de validation 
         msgValid[0].style.display ="block"; 
-        modalbg .style.display ="none"; 
-        heroSection[0].style.display ="none";      
+        pgeContent[0].style.display ="none";
+        //remise a zero des champs formulaire et des bordures blanches
+        firstNameInput.value = "" ;
+        firstNameInput.style.borderColor = "#fff";
+        lastNameInput.value = "";
+        lastNameInput.style.borderColor ="#fff";
+        emailInput.value = "",
+        emailInput.style.borderColor ="#fff";
+        birthdateInput.value = "";
+        birthdateInput.style.borderColor ="#fff";
+        quantityInput.value = "";
+        quantityInput.style.borderColor ="#fff";
+        checkboxCity1.checked = false;
+        checkboxCity2.checked = false;
+        checkboxCity3.checked = false;
+        checkboxCity4.checked = false;
+        checkboxCity5.checked = false;
+        checkboxCity6.checked = false;
+        checkboxInput.checked = false;       
    } 
 }
 
-/* BOUTON  DE FERMETURE DE MESSAGE QUAND VALIDATION REUSSIE*/
+/* BOUTON ET CROIX FERMETURE DE MESSAGE QUAND VALIDATION REUSSIE*/
 
 // événement sur le bouton fermer
 closeBtnRed.addEventListener("click",closeMsg);
 function closeMsg() {
   msgValid[0].style.display = "none";
+  pgeContent[0].style.display ="block";
   heroSection[0].style.display ="block";
-// on retire bouton s'incrire de hero section sur le bouton fermer
-  btnSuscribe[0].style.display = "none";
+  modalbg.style.display ="none";
 }
 
 // événement sur fermeture de la croix
 closeBtn2.addEventListener("click",closeValid);
 function closeValid() {
   msgValid[0].style.display = "none";
+  pgeContent[0].style.display ="block";
   heroSection[0].style.display ="block";
-  // on retire bouton s'incrire de hero section sur le bouton croix
-  btnSuscribe[0].style.display = "none";
+  modalbg.style.display ="none";
 }
