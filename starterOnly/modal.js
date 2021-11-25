@@ -60,7 +60,7 @@ const regexEmail = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,3}$/;
 const regexBirthdate = /^(19[3-9]+[0-9]|200[0-6])-\d{2}\-\d{2}$/;
 // regex combien de tournoi
 const regexQuantity = /^\d{1,2}$/;
-// variable de controle
+// variable de controle 
 let valideInput = false;
 
 
@@ -250,7 +250,7 @@ checkboxInput.addEventListener("change",validateForCheckbox);
 
 function validateForCheckbox() {
   
-if (!checkboxInput.checked){
+ if (!checkboxInput.checked){
   errorConditions.style.display = "block";
   valideInput = false;
   console.log(valideInput) 
@@ -273,8 +273,7 @@ if (!regexFirstLast.test(firstNameInput.value)){
   errorFirst.style.display ="block";
   firstNameInput.style.borderColor = "#e54858";
   firstNameInput.style.borderWidth = "3px";
-
-   }
+  }
 //nom   
 if (!regexFirstLast.test(lastNameInput.value)){ 
   e.preventDefault();
@@ -282,7 +281,7 @@ if (!regexFirstLast.test(lastNameInput.value)){
   errorLast.style.display ="block";
   lastNameInput.style.borderColor = "#e54858";
   lastNameInput.style.borderWidth = "3px";
-   }
+  }
 //email 
 if (!regexEmail.test(emailInput.value)){
   e.preventDefault();
@@ -290,25 +289,25 @@ if (!regexEmail.test(emailInput.value)){
   errorMail.style.display ="block";
   emailInput.style.borderColor = "#e54858";
   emailInput.style.borderWidth = "3px";
-   }
+  }
 //date de naissance  
-   if (!regexBirthdate.test(birthdateInput.value)){
+if (!regexBirthdate.test(birthdateInput.value)){
   e.preventDefault();
   valideInput = false; 
   errorBirthdate.style.display ="block";
   birthdateInput.style.borderColor = "#e54858";
   birthdateInput.style.borderWidth = "3px";
-   }
+  }
 //combien de tournoi    
-   if (!regexQuantity.test(quantityInput.value)){
+if (!regexQuantity.test(quantityInput.value)){
    e.preventDefault();
    valideInput = false;
   errorQuantity.style.display ="block";
   quantityInput.style.borderColor = "#e54858";
   quantityInput.style.borderWidth = "3px";
-   }
+  }
 //choix des villes
- if (checkboxCity1.checked || checkboxCity2.checked || checkboxCity3.checked || checkboxCity4.checked || checkboxCity5.checked || checkboxCity6.checked){ 
+if (checkboxCity1.checked || checkboxCity2.checked || checkboxCity3.checked || checkboxCity4.checked || checkboxCity5.checked || checkboxCity6.checked){ 
   valideInput = true; 
   errorOptions.style.display ="none";
   } else {
@@ -317,41 +316,41 @@ if (!regexEmail.test(emailInput.value)){
   errorOptions.style.display ="block";  
   }
 //condition d'utilisation   
-   if (!checkboxInput.checked){ 
+if (!checkboxInput.checked){ 
   e.preventDefault();
   valideInput = false;
    errorConditions.style.display ="block"; 
-   } else {
+  } else {
   valideInput = true;
   errorConditions.style.display = "none"; 
-   }
+  }
 
   //controle global du formulaire et validation  si tout est ok
   e.preventDefault();
-   if (regexFirstLast.test(firstNameInput.value) && (regexFirstLast.test(lastNameInput.value) && (regexEmail.test(emailInput.value) && (regexBirthdate.test(birthdateInput.value)
-   && (regexQuantity.test(quantityInput.value) && (checkboxCity1.checked || checkboxCity2.checked || checkboxCity3.checked || checkboxCity4.checked || checkboxCity5.checked ||
-      checkboxCity6.checked) && (checkboxInput.checked) ))))) {
-        //affichage message de validation 
-        msgValid[0].style.display ="block"; 
-        pgeContent[0].style.display ="none";
-        //remise a zero des champs formulaire et des bordures blanches
-        firstNameInput.value = "" ;
-        firstNameInput.style.borderColor = "#fff";
-        lastNameInput.value = "";
-        lastNameInput.style.borderColor ="#fff";
-        emailInput.value = "",
-        emailInput.style.borderColor ="#fff";
-        birthdateInput.value = "";
-        birthdateInput.style.borderColor ="#fff";
-        quantityInput.value = "";
-        quantityInput.style.borderColor ="#fff";
-        checkboxCity1.checked = false;
-        checkboxCity2.checked = false;
-        checkboxCity3.checked = false;
-        checkboxCity4.checked = false;
-        checkboxCity5.checked = false;
-        checkboxCity6.checked = false;
-        checkboxInput.checked = false;       
+if (regexFirstLast.test(firstNameInput.value) && (regexFirstLast.test(lastNameInput.value) && (regexEmail.test(emailInput.value) && (regexBirthdate.test(birthdateInput.value)
+  && (regexQuantity.test(quantityInput.value) && (checkboxCity1.checked || checkboxCity2.checked || checkboxCity3.checked || checkboxCity4.checked || checkboxCity5.checked ||
+  checkboxCity6.checked) && (checkboxInput.checked) ))))) {
+    //affichage message de validation 
+      msgValid[0].style.display ="block"; 
+      pgeContent[0].style.display ="none";
+    //remise a zero des champs formulaire et des bordures blanches
+      firstNameInput.value = "" ;
+      firstNameInput.style.borderColor = "#fff";
+      lastNameInput.value = "";
+      lastNameInput.style.borderColor ="#fff";
+      emailInput.value = "",
+      emailInput.style.borderColor ="#fff";
+      birthdateInput.value = "";
+      birthdateInput.style.borderColor ="#fff";
+      quantityInput.value = "";
+      quantityInput.style.borderColor ="#fff";
+      checkboxCity1.checked = false;
+      checkboxCity2.checked = false;
+      checkboxCity3.checked = false;
+      checkboxCity4.checked = false;
+      checkboxCity5.checked = false;
+      checkboxCity6.checked = false;
+      checkboxInput.checked = false;       
    } 
 }
 
