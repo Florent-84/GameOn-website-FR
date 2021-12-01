@@ -78,6 +78,37 @@ closeBtn.addEventListener("click", closeModal);
 //fermer le formulaire modal
 function closeModal() {
   modalbg.style.display = "none";
+  resetForm(); 
+}
+
+/* FONCTION DE REINITIALISATION DU FORMULAIRE */
+
+function resetForm() {
+  //remise a zero des champs formulaire et des bordures blanches
+  firstNameInput.value = "" ;
+  firstNameInput.style.borderColor = "#fff";
+  lastNameInput.value = "";
+  lastNameInput.style.borderColor ="#fff";
+  emailInput.value = "",
+  emailInput.style.borderColor ="#fff";
+  birthdateInput.value = "";
+  birthdateInput.style.borderColor ="#fff";
+  quantityInput.value = "";
+  quantityInput.style.borderColor ="#fff";
+  checkboxCity1.checked = false;
+  checkboxCity2.checked = false;
+  checkboxCity3.checked = false;
+  checkboxCity4.checked = false;
+  checkboxCity5.checked = false;
+  checkboxCity6.checked = false;
+  checkboxInput.checked = false;
+  errorFirst.style.display ="none";
+  errorLast.style.display ="none";
+  errorMail.style.display ="none";
+  errorBirthdate.style.display ="none";
+  errorQuantity.style.display ="none";
+  errorOptions.style.display ="none"; 
+  errorConditions.style.display = "none";
 }
 
 /* LES EVENEMENTS DES INPUTS INDIVIDUEL */
@@ -92,13 +123,11 @@ function validateFirstNameWithRegex(e){
    firstNameInput.style.borderColor = "green";
    firstNameInput.style.borderWidth = "3px";
    valideInput = true;
-   console.log(valideInput)
  } else {
    errorFirst.style.display ="block";
    firstNameInput.style.borderColor = "#e54858";
    firstNameInput.style.borderWidth = "3px";
    valideInput = false;
-   console.log(valideInput)
  }
 }
 
@@ -112,13 +141,11 @@ function validateLastNameWithRegex(e){
    lastNameInput.style.borderColor = "green";
    lastNameInput.style.borderWidth = "3px";
    valideInput = true;
-   console.log(valideInput)
  } else {
    errorLast.style.display ="block";
    lastNameInput.style.borderColor = "#e54858";
    lastNameInput.style.borderWidth = "3px";
    valideInput = false;
-   console.log(valideInput)
  }
 }
 
@@ -132,13 +159,11 @@ function validateEmailWithRegex(e){
   emailInput.style.borderColor = "green";
   emailInput.style.borderWidth = "3px";
   valideInput = true;
-   console.log(valideInput)
  } else {
   errorMail.style.display ="block";
   emailInput.style.borderColor = "#e54858";
    emailInput.style.borderWidth = "3px";
    valideInput = false;
-   console.log(valideInput)
  }
 }
 
@@ -152,16 +177,13 @@ function validateBirthdateWithRegex(e){
   birthdateInput.style.borderColor = "green";
   birthdateInput.style.borderWidth = "3px";
   valideInput = true;
-   console.log(valideInput)
  } else {
   errorBirthdate.style.display ="block";
   birthdateInput.style.borderColor = "#e54858";
   birthdateInput.style.borderWidth = "3px";
   valideInput = false;
-   console.log(valideInput)
  }
 }
-
 
 // événement input du nombre de participation aux concours 
 quantityInput.addEventListener ("focusout", validateQuantityWithRegex);
@@ -173,13 +195,11 @@ function validateQuantityWithRegex(e){
   quantityInput.style.borderColor = "green";
   quantityInput.style.borderWidth = "3px";
   valideInput = true;
-   console.log(valideInput)
  } else {
   errorQuantity.style.display ="block";
   quantityInput.style.borderColor = "#e54858";
   quantityInput.style.borderWidth = "3px";
   valideInput = false;
-   console.log(valideInput)
  }
 }
 
@@ -190,7 +210,6 @@ function validCity1(){
   if (checkboxCity1.checked){
 errorOptions.style.display = "none";
 valideInput = true;
-console.log(valideInput);
   }
 }
 
@@ -200,7 +219,6 @@ function validCity2(){
   if (checkboxCity2.checked){
 errorOptions.style.display = "none";
 valideInput = true;
-console.log(valideInput);
   }
 }
 
@@ -210,7 +228,6 @@ function validCity3(){
   if (checkboxCity3.checked){
 errorOptions.style.display = "none";
 valideInput = true;
-console.log(valideInput);
   }
 }
 
@@ -220,7 +237,6 @@ function validCity4(){
   if (checkboxCity4.checked){
 errorOptions.style.display = "none";
 valideInput = true;
-console.log(valideInput);
   }
 }
 
@@ -230,7 +246,6 @@ function validCity5(){
   if (checkboxCity5.checked){
 errorOptions.style.display = "none";
 valideInput = true;
-console.log(valideInput);
   }
 }
 
@@ -240,10 +255,8 @@ function validCity6(){
   if (checkboxCity6.checked){
 errorOptions.style.display = "none";
 valideInput = true;
-console.log(valideInput);
   }
 }
-
 
 // événement input conditions d'utilisation
 checkboxInput.addEventListener("change",validateForCheckbox);
@@ -253,15 +266,14 @@ function validateForCheckbox() {
  if (!checkboxInput.checked){
   errorConditions.style.display = "block";
   valideInput = false;
-  console.log(valideInput) 
  } else {
   errorConditions.style.display ="none";
   valideInput = true;
-  console.log(valideInput)
  }
 }
 
 //EVENEMENT POUR LA VALIDATION DU FORMULAIRE SI TOUT LES CHAMPS SONT BIEN REMPLIS AU CLICK
+
 btnSubmit.addEventListener('click',validateForm);
 
 function validateForm(e){
@@ -333,38 +345,15 @@ if (regexFirstLast.test(firstNameInput.value) && (regexFirstLast.test(lastNameIn
     //affichage message de validation 
       msgValid[0].style.display ="block"; 
       pgeContent[0].style.display ="none";
-    //remise a zero des champs formulaire et des bordures blanches
-      firstNameInput.value = "" ;
-      firstNameInput.style.borderColor = "#fff";
-      lastNameInput.value = "";
-      lastNameInput.style.borderColor ="#fff";
-      emailInput.value = "",
-      emailInput.style.borderColor ="#fff";
-      birthdateInput.value = "";
-      birthdateInput.style.borderColor ="#fff";
-      quantityInput.value = "";
-      quantityInput.style.borderColor ="#fff";
-      checkboxCity1.checked = false;
-      checkboxCity2.checked = false;
-      checkboxCity3.checked = false;
-      checkboxCity4.checked = false;
-      checkboxCity5.checked = false;
-      checkboxCity6.checked = false;
-      checkboxInput.checked = false;       
+   //remise a zero des champs formulaire et des bordures blanches avec fonction réinitialisation
+      resetForm();
    } 
 }
 
-/* BOUTON ET CROIX FERMETURE DE MESSAGE QUAND VALIDATION REUSSIE*/
+/* BOUTON FERMER ET CROIX FERMETURE DE MESSAGE QUAND VALIDATION REUSSIE */
 
 // événement sur le bouton fermer
-closeBtnRed.addEventListener("click",closeMsg);
-function closeMsg() {
-  msgValid[0].style.display = "none";
-  pgeContent[0].style.display ="block";
-  heroSection[0].style.display ="block";
-  modalbg.style.display ="none";
-}
-
+closeBtnRed.addEventListener("click",closeValid);
 // événement sur fermeture de la croix
 closeBtn2.addEventListener("click",closeValid);
 function closeValid() {
